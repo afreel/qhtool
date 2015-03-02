@@ -1,0 +1,10 @@
+<figure class="tutorCard" data-subject=<%= subject %> data-userid=<%= user.objectId %>>
+	<% if (user.available) { %> 
+		<div class="online-dot"></div>
+	<% } %>
+  <img src=<%= user.picture.url %>>
+	<figcaption>
+		<h3><%= user.displayName %></h3>
+		<span><%= (user.Rate / 4).toFixed(2) %></span>
+	</figcaption>
+</figure>

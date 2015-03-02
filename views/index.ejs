@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="http://vast-engineering.github.io/jquery-popup-overlay/jquery.popupoverlay.js"></script>
+    <script src="javascripts/main.js"></script>
+    <title> Users </title>
+  </head>
+  <body>
+  	<% for (subject in subjectUsersDict) { %>
+  		<% var users = subjectUsersDict[subject] %>
+  		<%- include('subjectPartial', {users: users, subject: subject}); %>
+  	<% } %>
+  </body>
+  <!-- Popup below is skeleton, populated when it is toggled on -->
+  <div id="tutorPopup">
+    <div id="tutorTitleSection">
+      <img id="tutorCirclePic"></img>
+      <div id="tutorName"></div>
+      <div id="tutorRating"></div>
+      <div id="tutorRate"></div>
+    </div>
+    <div id="tutorDetailsSection">
+      <div id="educationSection">
+        <h3>Education</h3>
+        <div></div>
+      </div>
+      <div id="subjectDetailsSection">
+        <h3></h3>
+        <div></div>
+      </div>
+      <div id="tutoringPhilosophySection">
+        <h3>Tutoring Philosophy</h3>
+        <div></div>
+      </div>
+      <div id="generalQualificationsSection">
+        <h3>General Qualifications</h3>
+        <div></div>
+      </div>
+      <div id="specialQualificationsSection">
+        <h3>Special Qualifications</h3>
+        <div></div>
+      </div>
+      <div id="favoriteThingsSection">
+        <h3>Some of my favorite things to do are</h3>
+        <div></div>
+      </div>
+      <div id="availabilitySection">
+        <h3>Availability</h3>
+        <div></div>
+      </div>
+    </div>
+	</div>
+</html>
