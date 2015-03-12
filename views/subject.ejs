@@ -10,6 +10,11 @@
     <title><%= subject %></title>
   </head>
   <body>
+    <div class="subjectTitle">
+      <div class="goBack"><span>Back</span></div>
+      <h1><span><%= insertSpaces(subject) %></span></h1>
+    </div>
   	<%- include('subjectPartial', {users: users, subject: subject}); %>
   </body>
+  <%- include('tutorPopupPartial'); %>
 </html>

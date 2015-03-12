@@ -9,21 +9,48 @@ a {
 }
 
 h1 {
+	display: inline-block;
 	text-align: center;
 	color: #2c3f52;
+	padding: 10px;
 }
 
-h1:hover {
+.subjectTitleLink:hover {
 	cursor: pointer;
 }
 
-h1 span:hover {
-	-webkit-transition: border-bottom 0.5s; /* For Safari 3.1 to 6.0 */
-  transition: border-bottom 0.5s;
+.subjectTitleLink span:hover {
+	-webkit-transition: color 0.5s; /* For Safari 3.1 to 6.0 */
+  transition: color 0.5s;
+  color: #ed4e6e;
 }
 
-h1 span:hover {
-	border-bottom: 5px solid #ed4e6e;
+.subjectTitle {
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.viewMore, .goBack {
+	display: inline-block;
+	display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.viewMore span, .goBack span {
+	padding: 8px;
+	background-color: #ed4e6e;
+	color: white;
+	border-radius: 5px;
+}
+
+.viewMore span:hover, .goBack span:hover {
+	cursor: pointer;
+	-webkit-transition: background-color 0.5s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 0.5s;
+  background-color: #2c3f52;
 }
 
 .grid {
@@ -112,9 +139,84 @@ h1 span:hover {
 
 #tutorCirclePic {
 	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+	border: 5px solid #2c3f52;
 }
 
-#tutorPopup {
+.tutor_popup {
 	background-color: white;
 	width: 70%;
+	height: 90%;
+	overflow: auto;
+	border-radius: 5px;
+	color: #2c3f52;
+}
+
+#popupHeader {
+	position: fixed;
+	height: 50px;
+	width: inherit;
+	background-color: white;
+	border-bottom: 3px solid #2c3f52;
+	text-align: center;
+}
+
+.tutor_popup_close {
+	background-image: url('/images/circle_close_delete.png');
+	background-repeat: no-repeat;
+  background-size: contain;
+	height: 30px;
+	width: 30px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.a-tab-link {
+	text-decoration: none;
+	outline: none;
+}
+
+#about-tab-link, #reviews-tab-link {
+	color: #2c3f52;
+	text-align: center;
+}
+
+#about-tab-link {
+	margin-right: 10px;
+}
+
+#reviews-tab-link {
+	margin-left: 10px;
+}
+
+.ui-tabs-nav {
+	margin-top: 20px;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.ui-state-default {
+	display: inline-block;
+}
+
+.popup-active-tab {
+	border-bottom: 5px solid #ed4e6e;
+}
+
+#tutorTitleSection {
+	text-align: center;
+	padding-top: 60px;
+	padding-bottom: 10px;
+}
+
+#tutorDetailsSection {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.personInfoSection {
+	border-top: 1px solid #2c3f52;
+	padding-bottom: 15px;
 }
