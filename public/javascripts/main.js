@@ -1,11 +1,24 @@
 $(document).ready(function() {
 
-	$(".tutor_popup").popup();
-	$(".tutor_popup").popup('hide');
-	$( "#tabs" ).tabs();
-	// Ensure that the About Tab is activated first
-	$('#about-tab-link').addClass('popup-active-tab');
+	$(".tutor_popup").popup({
+		// on closing the popup, remove all the information
+		onclose: function() {
+			// $('#about-tab-link').removeClass('popup-active-tab');
+			// $('#reviews-tab-link').removeClass('popup-active-tab');
+			// Clear existing containers
+			$("#tutorTitleSection img").empty();
+			$("#tutorTitleSection div").empty();
+			$("#tutorDetailsSection div div").empty();
+			// $("#reviewsContainer").empty();
+		}
+	});
 
+	// initially hide the popup
+	$(".tutor_popup").popup('hide');
+	// initialize the popup tabs
+	//$( "#tabs" ).tabs();
+
+	// triggered when clicking a tutor's display card
 	$(".tutorCard").click(function() {
 		var userId = $(this).data('userid');
 		var subject = $(this).data('subject');
@@ -17,6 +30,10 @@ $(document).ready(function() {
 				var user = data.content.user;
 				console.log(user);
 
+				// Ensure that the About Tab is activated and underlined first
+				// $( "#tabs" ).tabs({ active: 0 });
+				// $('#about-tab-link').addClass('popup-active-tab');
+
 				// Picture
 				$("#tutorCirclePic").attr('src', user.picture.url);
 
@@ -24,21 +41,30 @@ $(document).ready(function() {
 				$("#tutorName").text(user.displayName);
 
 				// Ratings Calculations
+				// var writtenReviews = [];
 				var reviews = user.reviews;
 				if (reviews.length > 0) {
 					var numReviews = reviews.length; // number of reviews
 					var ratingTotal = 0; // non-normalized rating
-					var countedRatings = 0; // number of ratings
 					for (var i = 0; i < numReviews; i++) {
-						// only count reviews that actually included ratings
-						if (reviews[0].Rating) {
-							ratingTotal += reviews[0].Rating;
-							countedRatings += 1;
+						// get reviews that have written feedback for display
+						// if (reviews[i].Review) {
+						// 	if (reviews[i].Reviewer === "QuickHelp") {
+						// 		writtenReviews.unshift([reviews[i].Rating, reviews[i].createdAt, reviews[i].Review, reviews[i].Reviewer]);
+						// 	} else {
+						// 		writtenReviews.push([reviews[i].Rating, reviews[i].createdAt, reviews[i].Review, reviews[i].Reviewer]);
+						// 	}
+						// }
+						// aggregate ratings to compute average
+						if (reviews[i].Rating) {
+							ratingTotal += reviews[i].Rating;
+						} else {
+							ratingTotal += 0; // if no rating, it is considered a 0
 						}
 					}
-					if (countedRatings > 0) {
-						var normalizedRating = (ratingTotal / countedRatings).toFixed(1);
-						$("#tutorRating").text("Rating: " + normalizedRating + " with " + countedRatings + " ratings");
+					if (numReviews > 0) {
+						var normalizedRating = (ratingTotal / numReviews).toFixed(1);
+						$("#tutorRating").text("Rating: " + normalizedRating + " with " + numReviews + " ratings");
 					} else {
 						$("#tutorRating").text("No rating yet");
 					}
@@ -109,6 +135,18 @@ $(document).ready(function() {
 					$("#availabilitySection").hide();
 				}
 
+				// WRITTEN REVIEWS NOT CURRENTLY SUPPORTED
+				// if (writtenReviews.length == 0) {
+				// 	$("#reviewsContainer").append("<div>No Written Reviews Yet</div>");
+				// } else {
+				// 	// writtenReviews[i] = [Rating, createdAt, Review, Reviewer]
+				// 	for (var i=0; i < writtenReviews.length; i++) {
+				// 		// TODO: use a partial instead and pass it the review
+				// 		$("#reviewsContainer").append("<div>"+writtenReviews[i][2]+"</div>");
+				// 	}
+				// }
+
+				// show popup and scroll to the top
 				$(".tutor_popup").popup('show');
 				$(".tutor_popup").scrollTop(0);
 			}
@@ -120,17 +158,17 @@ $(document).ready(function() {
 	});
 
 	// Popup Tab Click
-	$('.popup-tab-list-item').click(function() {
-		var activeTab = $(".popup-tab-list-item.ui-state-active").index();
-		// 0 is About Tab, 1 is Reviews Tab
-		if (activeTab == 0) {
-			$('#about-tab-link').addClass('popup-active-tab');
-			$('#reviews-tab-link').removeClass('popup-active-tab');
-		} else if (activeTab == 1) {
-			$('#about-tab-link').removeClass('popup-active-tab');
-			$('#reviews-tab-link').addClass('popup-active-tab');
-		}
-	});
+	// $('.popup-tab-list-item').click(function() {
+	// 	var activeTab = $(".popup-tab-list-item.ui-state-active").index();
+	// 	// 0 is About Tab, 1 is Reviews Tab
+	// 	if (activeTab == 0) {
+	// 		$('#about-tab-link').addClass('popup-active-tab');
+	// 		$('#reviews-tab-link').removeClass('popup-active-tab');
+	// 	} else if (activeTab == 1) {
+	// 		$('#about-tab-link').removeClass('popup-active-tab');
+	// 		$('#reviews-tab-link').addClass('popup-active-tab');
+	// 	}
+	// });
 
 	$(".subjectTitleLink").click(function() {
 		var subject = $(this).parent().data('subject');
