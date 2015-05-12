@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <!--<script src="http://vast-engineering.github.io/jquery-popup-overlay/jquery.popupoverlay.js"></script>-->
+    <script src="javascripts/jquery.popupoverlay.js"></script>
+    <script src="javascripts/main.js"></script>
+    <script src="javascripts/search.js"></script>
+    <title> Users </title>
+  </head>
+  <body>
+    <%- include('searchbarPartial', {queryDict: queryDict}); %>
+  	<% for (subject in subjectUsersDict) { %>
+      <div class="subjectTitle" data-subject=<%= subject %>>
+        <h1 class="subjectTitleLink"><span><%= insertSpaces(subject) %></span></h1>
+        <!-- <div class="viewMore"><span>View More</span></div> -->
+      </div>
+      <%- include('subjectPartial', {users: subjectUsersDict[subject], queryDict: queryDict}); %>
+    <% } %>
+  </body>
+  <%- include('tutorPopupPartial'); %>
+</html>

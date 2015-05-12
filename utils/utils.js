@@ -38,22 +38,40 @@ utils.insertSpaces = function(phrase) {
 }
 
 function getFirstName(name) {
-  return name.split(' ')[0];
+  if (name) {
+    return name.split(' ')[0];
+  }
+  return null;
 }
 
 function getLastInitial(name) {
+  if (name == null) {
+    return null;
+  }
   var trimmedName = name.trim();
   var nameArray = trimmedName.split(' ');
+  if (nameArray.length <= 1) {
+    return null;
+  }
   var lastName = nameArray[nameArray.length - 1];
   return lastName.substring(0,1).toUpperCase() + '.';
 }
 
 function concatName(first, last) {
-  return first + ' ' + last;
+  if (first) {
+    if (last) {
+      return first + ' ' + last;
+    }
+    return first;
+  }
+  return '';
 }
 
 function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+  if (string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+  return string;
 }
 
 module.exports = utils;

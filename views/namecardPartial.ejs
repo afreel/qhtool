@@ -1,4 +1,4 @@
-<figure class="tutorCard" data-subject=<%= subject %> data-userid=<%= user.objectId %>>
+<figure class="tutorCard" data-subject=<%= queryDict['subject'] %> data-userid=<%= user.objectId %> data-userlat=<%= queryDict['lat'] %> data-userlon=<%= queryDict['lon'] %>>
 	<% if (user.available) { %> 
 		<div class="online-dot"></div>
 	<% } %>

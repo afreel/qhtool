@@ -21,14 +21,15 @@ $(document).ready(function() {
 	// triggered when clicking a tutor's display card
 	$(".tutorCard").click(function() {
 		var userId = $(this).data('userid');
+		var userLat = $(this).data('userlat');
+		var userLon = $(this).data('userlon');
 		var subject = $(this).data('subject');
 		$.ajax({
 			type: "GET",
 			dataType: "json",
-			url: "users?id=" + userId,
+			url: "users?id=" + userId + '&lat=' + userLat + '&lon=' + userLon,
 			success: function(data) {
 				var user = data.content.user;
-				console.log(user);
 
 				// Ensure that the About Tab is activated and underlined first
 				// $( "#tabs" ).tabs({ active: 0 });
@@ -170,19 +171,19 @@ $(document).ready(function() {
 	// 	}
 	// });
 
-	$(".subjectTitleLink").click(function() {
-		var subject = $(this).parent().data('subject');
-		window.location = 'subjects?name=' + subject;
-	});
+	// $(".subjectTitleLink").click(function() {
+	// 	var subject = $(this).parent().data('subject');
+	// 	window.location = 'subjects?name=' + subject;
+	// });
 
-	$(".viewMore").click(function() {
-		var subject = $(this).parent().data('subject');
-		window.location = 'subjects?name=' + subject;
-	});
+	// $(".viewMore").click(function() {
+	// 	var subject = $(this).parent().data('subject');
+	// 	window.location = 'subjects?name=' + subject;
+	// });
 
-	$(".goBack").click(function() {
-		window.location = '/';
-	});
+	// $(".goBack").click(function() {
+	// 	window.location = '/';
+	// });
 
 	function insertUnderscores(name) {
 		return name.split(' ').join('_');

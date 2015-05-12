@@ -3,10 +3,12 @@ var utils = require('../utils/utils');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-
-	var mylocation = new Parse.GeoPoint({latitude: 42.35893149070544, longitude: -71.0944369466935});
 	
 	var userId = req.query.id;
+	var lat = req.query.lat;
+	var lon = req.query.lon;
+
+	var userLocation = new Parse.GeoPoint({latitude: lat, longitude: lon});
 
 	var userQuery = new Parse.Query(Parse.User);
 	userQuery.equalTo("objectId", userId);
@@ -16,7 +18,7 @@ router.get('/', function(req, res, next) {
 			var jsonUser = user.toJSON();
 	  	jsonUser.displayName = utils.getDisplayName(jsonUser);
 	  	if (jsonUser.location) {
-	  		jsonUser.distanceAway = mylocation.milesTo(jsonUser.location);
+	  		jsonUser.distanceAway = userLocation.milesTo(jsonUser.location);
 	  	}
 	  	var reviewsQuery = new Parse.Query("Reviews");
 	  	reviewsQuery.equalTo("Tutor", jsonUser.username);

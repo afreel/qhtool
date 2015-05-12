@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
+var query = require('./routes/query');
 var users = require('./routes/users');
 var subjects = require('./routes/subjects');
 
@@ -33,7 +34,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Configuring Passport
+var passport = require('passport');
+var expressSession = require('express-session');
+// TODO - Why Do we need this key ?
+app.use(expressSession({secret: 'mySecretKey'}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', routes);
+app.use('/query', query);
 app.use('/users', users);
 app.use('/subjects', subjects);
 

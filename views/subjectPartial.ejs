@@ -2,7 +2,7 @@
 	<ul class="grid cs-style">
 		<% for (var j = 0; j < users.length; j++) { %>
 			<li>
-				<%- include('namecardPartial', {user: users[j], subject: subject}); %>
+				<%- include('namecardPartial', {user: users[j], queryDict: queryDict}); %>
 			</li>
 		<% } %>
 	</ul>
