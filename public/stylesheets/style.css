@@ -304,6 +304,10 @@ h1 {
 	padding-left: 10px;
 }
 
+.liveRoomId {
+	color: #29A329;
+}
+
 .roomId:hover {
 	color: #ed4e6e;
 	cursor: pointer;
