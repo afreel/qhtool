@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var query = require('./routes/query');
+var requests = require('./routes/requests');
+var rooms = require('./routes/rooms');
 var users = require('./routes/users');
 var subjects = require('./routes/subjects');
 
@@ -26,14 +28,6 @@ app.locals.insertSpaces = function(name) {
 }
 ////////////////////////////
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
 // Configuring Passport
 var passport = require('passport');
 var expressSession = require('express-session');
@@ -42,8 +36,18 @@ app.use(expressSession({secret: 'mySecretKey'}));
 app.use(passport.initialize());
 app.use(passport.session());
 
+// uncomment after placing your favicon in /public
+//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use('/', routes);
 app.use('/query', query);
+app.use('/requests', requests);
+app.use('/rooms', rooms);
 app.use('/users', users);
 app.use('/subjects', subjects);
 

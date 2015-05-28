@@ -12,6 +12,7 @@ var defaultLevel = 'CollegeLevel';
 var subjects = ['Biology', 'Chemistry', 'Computer_Science', 'Economics', 'Engineering', 'Finance/Accounting', 'Interview_Practice', 'Job_Search/Prep', 'Language_Practice', 'Math', 'Paper/Essay/Proofreading', 'Physics', 'Psychology', 'Standardized_Test_Prep', 'Statistics', 'Other_Academics', 'Borrowing/Renting', 'Cleaning', 'Companionship', 'Delivery', 'Event_Organizing', 'Moving/Assembling/Fixing', 'Personal_Advice', 'Shopping_Assistant', 'Sports/Fitness/Workout', 'Other_Services'];
 
 router.get('/', function(req, res, next) {
-	res.render('index', { subjectUsersDict: subjectUsersDict, queryDict: queryDict });
-})
+	res.render('index');
+});
+
 module.exports = router;

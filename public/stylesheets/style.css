@@ -235,6 +235,8 @@ h1 {
 	padding-top: 60px;
 }*/
 
+/******** SEARCH BAR ********/
+
 #searchBar {
 	display: table;
 	position: fixed;
@@ -253,8 +255,112 @@ h1 {
   vertical-align: middle;
 }
 
-#searchButton{
+#searchButton {
 	font: 12px "Lucida Grande", Helvetica, Arial, sans-serif;
 	background-color: #ed4e6e;
 	color: white;
+}
+
+/******** REQUESTS ********/
+
+.requestHeader {
+	padding: 10px;
+	color: white;
+}
+
+.request {
+	padding-left: 10px;
+	padding-top: 5px;
+}
+
+.request:hover {
+	color: #ed4e6e;
+	cursor: pointer;
+}
+
+.requestDate {
+	display: inline-block;
+}
+
+.requestMessage {
+	vertical-align: bottom;
+	padding-left: 10px;
+	display: inline-block;
+	width: 50%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+/******** ROOMS ********/
+
+.roomsHeader {
+	padding: 10px;
+	color: white;
+}
+
+.roomId {
+	padding-top: 5px;
+	padding-left: 10px;
+}
+
+.roomId:hover {
+	color: #ed4e6e;
+	cursor: pointer;
+}
+
+/******** MESSAGES ********/
+
+#messagesContainer {
+	text-align: center;
+}
+
+#messageList {
+	width: 70%;
+	margin: 0 auto;
+	padding: 0;
+	list-style-type: none;
+}
+
+.messageContainer {
+	margin: 10px;
+}
+
+.textMessage {
+	display: inline-block;
+	border: 1px solid black;
+	color: #E6E6E6;
+	border-radius: 25px;
+	padding: 10px;
+}
+
+.hostMessageContainer {
+	text-align: left;
+}
+
+.hostMessage {
+	background-color: #808080;
+	text-align: left;
+}
+
+.helperMessageContainer {
+	text-align: right;
+}
+
+.helperMessage {
+	background-color: #29A329;
+	text-align: right;
+}
+
+.quickhelpMessageContainer {
+	text-align: center;
+}
+
+.quickhelpMessage {
+	background-color: #00B8E6;
+	text-align: center;
+}
+
+.messageTime {
+	font-size: 11px;
 }
