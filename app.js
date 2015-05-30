@@ -5,13 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var query = require('./routes/query');
-var requests = require('./routes/requests');
-var rooms = require('./routes/rooms');
-var users = require('./routes/users');
-var subjects = require('./routes/subjects');
-
 GLOBAL.Parse = require('parse').Parse;
 Parse.initialize("aKAGyMyLuUME31SOKEVhuks8qxo00jlTq9S3tuMO", "PjgY2U5aSiGfsNWCLLnmXK30Gc7i8MWSOUNBNyQ7");
 
@@ -36,13 +29,24 @@ app.use(expressSession({secret: 'mySecretKey'}));
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Initialize Passport
+var initPassport = require('./passport/init');
+initPassport(passport);
+
 // uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(__dirname + '/public/images/favicon-32x32.png'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+var routes = require('./routes/index')(passport);
+var query = require('./routes/query');
+var requests = require('./routes/requests');
+var rooms = require('./routes/rooms');
+var users = require('./routes/users');
+var subjects = require('./routes/subjects');
 
 app.use('/', routes);
 app.use('/query', query);

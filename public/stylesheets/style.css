@@ -368,3 +368,21 @@ h1 {
 .messageTime {
 	font-size: 11px;
 }
+
+/******** LOGIN ********/
+
+.login-container {
+	text-align: center;
+}
+
+.login-header {
+	font-size: 36px;
+	padding: 20px;
+	color: #2c3f52;
+}
+
+.login-button {
+	background-color: #ed4e6e;
+	color: white;
+}
+

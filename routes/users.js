@@ -2,7 +2,14 @@ var express = require('express');
 var utils = require('../utils/utils');
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
+var isAuthenticated = function (req, res, next) {
+	if (req.isAuthenticated())
+		return next();
+	// if the user is not authenticated then redirect him to the login page
+	res.redirect('/');
+}
+
+router.get('/', isAuthenticated, function(req, res, next) {
 	
 	var userId = req.query.id;
 	var lat = req.query.lat;

@@ -3,6 +3,13 @@ var router = express.Router();
 
 var _ = require('lodash');
 
+var isAuthenticated = function (req, res, next) {
+	if (req.isAuthenticated())
+		return next();
+	// if the user is not authenticated then redirect him to the login page
+	res.redirect('/');
+}
+
 // DEFAULT values for initial query
 var defaultRadius = 10; // miles
 var defaultLat = 42.35893149070544;
@@ -14,7 +21,7 @@ var upperLimit = 1000; // this is the most that Parse can return in one query
 
 // var subjects = ['Biology', 'Chemistry', 'Computer_Science', 'Economics', 'Engineering', 'Finance/Accounting', 'Interview_Practice', 'Job_Search/Prep', 'Language_Practice', 'Math', 'Paper/Essay/Proofreading', 'Physics', 'Psychology', 'Standardized_Test_Prep', 'Statistics', 'Other_Academics', 'Borrowing/Renting', 'Cleaning', 'Companionship', 'Delivery', 'Event_Organizing', 'Moving/Assembling/Fixing', 'Personal_Advice', 'Shopping_Assistant', 'Sports/Fitness/Workout', 'Other_Services'];
 
-router.get('/', function(req, res, next) {
+router.get('/', isAuthenticated, function(req, res, next) {
 
 	var queryDict = {};
 
