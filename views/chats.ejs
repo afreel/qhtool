@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+    <script src="../javascripts/chats.js"></script>
+    <title> Chats </title>
+  </head>
+  <body>
+    <div class="roomsHeader"> Rooms </div>
+  	<% for (var i = 0; i < liveRoomIds.length; i++) { %>
+      <div class="roomId liveRoomId" data-id=<%= liveRoomIds[i] %>><%= liveRoomIds[i] %></div>
+    <% } %>
+    <% for (var i = 0; i < staleRoomIds.length; i++) { %>
+      <div class="roomId" data-id=<%= staleRoomIds[i] %>><%= staleRoomIds[i] %></div>
+    <% } %>
+  </body>
+</html>

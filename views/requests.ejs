@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="../javascripts/requests.js"></script>
+    <title> Requests </title>
+  </head>
+  <body>
+    <div class="requestHeader"> Quickhelp Requests </div>
+  	<% for (var i = 0; i < quickhelpRequests.length; i++) { %>
+      <div class="request" data-id=<%= quickhelpRequests[i].objectId %>>
+        <div class="requestDate"><%= new Date(quickhelpRequests[i].createdAt) %></div>
+        <div class="requestMessage"><%= quickhelpRequests[i].message %></div>
+      </div>
+    <% } %>
+    <div class="requestHeader"> Quickhelper Requests </div>
+    <% for (var i = 0; i < quickhelperRequests.length; i++) { %>
+      <div class="request" data-id=<%= quickhelperRequests[i].objectId %>>
+        <div class="requestDate"><%= new Date(quickhelperRequests[i].createdAt) %></div>
+        <div class="requestMessage"><%= quickhelperRequests[i].message %></div>
+      </div>
+    <% } %>
+  </body>
+</html>

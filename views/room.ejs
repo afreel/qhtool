@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+    <title> Room </title>
+  </head>
+  <body>
+    <div id="messagesContainer">
+      <ul id="messageList">
+    	<% for (var i = 0; i < messages.length; i++) { %>
+        <% if (messages[i].user == hostId) { %>
+          <li class="messageContainer hostMessageContainer">
+            <div class="textMessage hostMessage"><%= messages[i].text %></div>
+            <div class="messageTime"><%= new Date(messages[i].createdAt) %></div>
+          </li>
+        <% } if (messages[i].user == helperId) { %>
+          <li class="messageContainer helperMessageContainer">
+            <div class="textMessage helperMessage"><%= messages[i].text %></div>
+            <div class="messageTime"><%= new Date(messages[i].createdAt) %></div>
+          </li>
+        <% } if (messages[i].user == quickhelpId) { %>
+          <li class="messageContainer quickhelpMessageContainer">
+            <div class="textMessage quickhelpMessage"><%= messages[i].text %></div>
+          </li>
+        <% } %>
+      <% } %>
+      </ul>
+    </div>
+  </body>
+</html>
