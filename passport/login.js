@@ -2,9 +2,9 @@ var LocalStrategy = require('passport-local').Strategy;
 var bCrypt = require('bcrypt-nodejs');
 
 var users = [
-    { id: 1, username: 'afreel', password: 'qhteam' },
-    { id: 2, username: 'hikari', password: 'qhteam' },
-    { id: 3, username: 'mazen', password: 'qhteam' }
+    { id: 1, username: 'XXXXXX', password: 'XXXXXX' },
+    { id: 2, username: 'XXXXXX', password: 'XXXXXX' },
+    { id: 3, username: 'XXXXXX', password: 'XXXXXX' }
 ];
 
 module.exports = function(passport) {
