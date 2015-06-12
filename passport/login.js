@@ -19,7 +19,7 @@ module.exports = function(passport) {
         if (user.password != password) { return done(null, false, { message: 'Invalid password' }); }
         return done(null, user);
       });
-  }));
+  })); 
 
   function findByUsername(username, fn) {
     for (var i = 0, len = users.length; i < len; i++) {

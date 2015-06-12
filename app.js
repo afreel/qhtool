@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 GLOBAL.Parse = require('parse').Parse;
-Parse.initialize("aKAGyMyLuUME31SOKEVhuks8qxo00jlTq9S3tuMO", "PjgY2U5aSiGfsNWCLLnmXK30Gc7i8MWSOUNBNyQ7");
+Parse.initialize("XXXXXXX", "XXXXXXX");
 
 var app = express();
 
